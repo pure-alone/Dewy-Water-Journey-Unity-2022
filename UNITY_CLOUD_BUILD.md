@@ -4,7 +4,7 @@ This repository is configured for the Unity version recommended by the assessmen
 
 ## Build target
 
-- Repository: `pure-alone/Dewy-Water-Journey-Unity`
+- Repository: `zhihe-zhang1/Dewy-Water-Journey-Unity-2022`
 - Branch: `main`
 - Unity editor: **2022.3.62f2**
 - Platform: **WebGL**
@@ -43,7 +43,7 @@ No custom pre-build or post-build method needs to be entered in Unity Cloud.
 
 Connect GitHub repository:
 
-`pure-alone/Dewy-Water-Journey-Unity`
+`zhihe-zhang1/Dewy-Water-Journey-Unity-2022`
 
 and build branch:
 
