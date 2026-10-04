@@ -41,22 +41,9 @@ Compatibility changes from the original Unity 6 project are intentionally limite
 
 The single scene contains a `DewyBootstrap` component. The complete Canvas, EventSystem, page flow and UGUI visuals are created natively at runtime. The original Unity 6 state is preserved on the `unity6-original-backup` branch.
 
-## Build WebGL locally
-
-Use **Dewy > Build WebGL for itch.io** in the Unity Editor. Output is written to:
-
-`Builds/WebGL/`
-
-The build helper applies:
-
-- Web player size: 450 × 900
-- Custom template: `PROJECT:Dewy`
-- Gzip compression with decompression fallback
-- Main scene: `Assets/Scenes/Main.unity`
-
 ## Unity Cloud / Build Automation
 
-1. In Unity Cloud, connect the GitHub repository `pure-alone/Dewy-Water-Journey-Unity`.
+1. In Unity Cloud, connect the GitHub repository `zhihe-zhang1/Dewy-Water-Journey-Unity-2022`.
 2. Create a **Build Automation** target for **WebGL**.
 3. Use branch **main**.
 4. Select **Unity 2022.3.62f2 LTS**; the project is pinned to that exact editor revision.
