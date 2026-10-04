@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <title>{{{ PRODUCT_NAME }}}</title>
+  <link rel="stylesheet" href="TemplateData/style.css">
+</head>
+<body>
+  <main id="dewy-shell">
+    <canvas id="unity-canvas" width="450" height="900" tabindex="-1"></canvas>
+    <div id="unity-loading-bar"><div id="unity-progress-bar-full"></div></div>
+    <div id="unity-warning"></div>
+  </main>
+  <script>
+    const canvas = document.querySelector('#unity-canvas');
+    const loadingBar = document.querySelector('#unity-loading-bar');
+    const progressBarFull = document.querySelector('#unity-progress-bar-full');
+    const buildUrl = 'Build';
+    const loaderUrl = buildUrl + '/{{{ LOADER_FILENAME }}}';
+    const config = {
+      arguments: [], dataUrl: buildUrl + '/{{{ DATA_FILENAME }}}',
+      frameworkUrl: buildUrl + '/{{{ FRAMEWORK_FILENAME }}}',
+      codeUrl: buildUrl + '/{{{ CODE_FILENAME }}}',
+#if MEMORY_FILENAME
+      memoryUrl: buildUrl + '/{{{ MEMORY_FILENAME }}}',
+#endif
+#if SYMBOLS_FILENAME
+      symbolsUrl: buildUrl + '/{{{ SYMBOLS_FILENAME }}}',
+#endif
+      streamingAssetsUrl: 'StreamingAssets', companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}}, productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      showBanner: (msg, type) => console[type === 'error' ? 'error' : 'warn'](msg)
+    };
+    const script = document.createElement('script');
+    script.src = loaderUrl;
+    script.onload = () => createUnityInstance(canvas, config, p => progressBarFull.style.width = (100 * p) + '%')
+      .then(() => loadingBar.style.display = 'none')
+      .catch(alert);
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
